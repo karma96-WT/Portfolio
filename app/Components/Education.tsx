@@ -2,7 +2,12 @@ import React from "react";
 import { FaGraduationCap, FaCode, FaAward, FaBookOpen } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-export default function EducationPage() {
+interface PageProps {
+  onNext?: () => void;
+  onPrevious?: () => void;
+}
+
+export default function EducationPage({ onNext, onPrevious }: PageProps) {
   // Timeline data for the right page layout
   const milestones1 = [
     {
@@ -11,7 +16,6 @@ export default function EducationPage() {
       title: "Tashiding Lower Secondary School, Dagana",
       desc: "Achievements: Served as House Captain (2018), Student of the Year (2018)",
     },
-    
   ];
   const milestones2 = [
     {
@@ -31,7 +35,7 @@ export default function EducationPage() {
       year: "2023 - present",
       title: "College of Science and Technology, Chhukha",
       desc: "Achievements: Winner of Inter-college programming contest (2026); Developer of the official RUB faculty meet room booking system, currently live and operational at CST (2026); Best of CST winner (2026); active satellite development group (2025-present)",
-    }
+    },
   ];
 
   return (
@@ -44,7 +48,6 @@ export default function EducationPage() {
         {/* 3. LEFT PAGE (Page 03) // Primary Milestone Overview */}
         <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-800 bg-green-950 text-white font-sans min-h-0">
           <div className="flex flex-col justify-center flex-1 my-auto">
-            
             <h2 className="text-2xl md:text-4xl font-black mt-2 md:mt-4 mb-4 text-white tracking-tight">
               Qualification
             </h2>
@@ -100,7 +103,10 @@ export default function EducationPage() {
 
           {/* Footer Backwards Link infrastructure */}
           <div className="flex items-center justify-between pt-4 mt-6 md:mt-8 border-t border-emerald-900/30">
-            <button className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-emerald-400 hover:text-cyan-400 transition-colors">
+            <button
+              onClick={onPrevious}
+              className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-emerald-400 hover:text-cyan-400 transition-colors"
+            >
               <FiArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
               Previous
             </button>
@@ -111,7 +117,6 @@ export default function EducationPage() {
         {/* 4. RIGHT PAGE (Page 04) // Detailed Academic Track Timeline */}
         <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between bg-green-950 text-white font-sans min-h-0">
           <div className="flex flex-col justify-center flex-1 space-y-4 md:space-y-6 my-auto">
-            
             {/* Timeline Wrapper Layout Block */}
             <div className="relative border-l-2 border-emerald-900/60 pl-6 space-y-6 ml-2">
               {milestones2.map((item, idx) => (
@@ -139,7 +144,10 @@ export default function EducationPage() {
           {/* Footer Forward Link infrastructure */}
           <div className="flex items-center justify-between pt-4 mt-6 md:mt-8 border-t border-emerald-900/30">
             <span className="text-slate-600 text-sm font-mono">page 04</span>
-            <button className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-cyan-400 bg-emerald-900/40 hover:bg-cyan-400 hover:text-emerald-950 px-4 py-2 rounded-xl transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+            <button
+              onClick={onNext}
+              className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-cyan-400 bg-emerald-900/40 hover:bg-cyan-400 hover:text-emerald-950 px-4 py-2 rounded-xl transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+            >
               Next Page
               <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>

@@ -2,7 +2,12 @@ import React from "react";
 import { FaGraduationCap, FaCode, FaAward, FaBookOpen } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-export default function TechStack() {
+interface PageProps {
+  onNext?: () => void;
+  onPrevious?: () => void;
+}
+
+export default function TechStack({ onNext, onPrevious }: PageProps) {
   return (
     <div className="min-h-screen bg-white py-6 md:py-12 px-2 sm:px-4 flex flex-col items-center justify-center">
       {/* 1. Main Book Container (Identical proportions and shadow parameters) */}
@@ -141,7 +146,10 @@ export default function TechStack() {
 
           {/* Footer Backwards Link infrastructure */}
           <div className="sticky bottom-0 flex items-center justify-between pt-4 mt-6 md:mt-8 border-t border-emerald-900/30">
-            <button className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-emerald-400 hover:text-cyan-400 transition-colors">
+            <button
+              onClick={onPrevious}
+              className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-emerald-400 hover:text-cyan-400 transition-colors"
+            >
               <FiArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
               Previous
             </button>

@@ -2,7 +2,12 @@ import React from "react";
 import { FaGraduationCap, FaCode, FaAward, FaBookOpen } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-export default function Projects() {
+interface PageProps {
+  onNext?: () => void;
+  onPrevious?: () => void;
+}
+
+export default function Projects({ onNext, onPrevious }: PageProps) {
   const projects1 = [
     {
       icon: <FaCode className="w-4 h-4 text-cyan-400" />,
@@ -89,7 +94,10 @@ export default function Projects() {
 
           {/* Footer Backwards Link infrastructure */}
           <div className="flex items-center justify-between pt-4 mt-6 md:mt-8 border-t border-emerald-900/30">
-            <button className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-emerald-400 hover:text-cyan-400 transition-colors">
+            <button
+              onClick={onPrevious}
+              className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-emerald-400 hover:text-cyan-400 transition-colors"
+            >
               <FiArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
               Previous
             </button>
@@ -150,7 +158,10 @@ export default function Projects() {
           {/* Footer Forward Link infrastructure */}
           <div className="flex items-center justify-between pt-4 mt-6 md:mt-8 border-t border-emerald-900/30">
             <span className="text-slate-600 text-sm font-mono">page 08</span>
-            <button className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-cyan-400 bg-emerald-900/40 hover:bg-cyan-400 hover:text-emerald-950 px-4 py-2 rounded-xl transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+            <button
+              onClick={onNext}
+              className="group flex items-center gap-2 cursor-pointer text-sm font-semibold tracking-wide text-cyan-400 bg-emerald-900/40 hover:bg-cyan-400 hover:text-emerald-950 px-4 py-2 rounded-xl transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+            >
               Next Page
               <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
